@@ -1,0 +1,69 @@
+html, body {
+  min-height: 100vh;
+}
+body {
+  font-family: "Roboto Mono", monospace;
+  background-color: #FDA7DF;
+  padding-bottom: 20px;
+}
+#quote-container {
+  margin: 10px auto;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  font-family: "Roboto Mono", monospace;
+}
+#quote {
+  font-family: "Roboto Mono", monospace;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #333;
+}
+#author {
+  font-family: "Roboto Mono", monospace;
+  font-style: italic;
+  color: #777;
+}
+#image-container {
+  margin-top: 20px;
+}
+#quote-card {
+  max-width: 800px;
+  margin: 10px auto;
+  font-family: "Roboto Mono", monospace;
+}
+.generate-button {
+  font-family: "Roboto Mono", monospace;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.generate-button:hover {
+  background-color: #45a049;
+}
+.read-score {
+	font-family: "Roboto Mono", monospace;
+	font-weight: 700;
+	font-size: 15px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	border-radius: 32px;
+	padding: 10px;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased !important;
+	-moz-font-smoothing: antialiased !important;
+	text-rendering: optimizelegibility !important;
+}
+.loading {
+  display: none;
+  text-align: center;
+}
