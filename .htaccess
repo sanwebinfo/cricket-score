@@ -3,6 +3,12 @@ RewriteRule (^\.|/\.) - [F]
 
 options -Indexes
 
+<IfModule mod_expires.c>
+  <FilesMatch "\.(woff2)$">
+    Header set Cache-Control "max-age=31536000, public"
+  </FilesMatch>
+</IfModule>
+
 <Files .htaccess>
 order allow,deny
 Deny from all

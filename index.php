@@ -42,10 +42,6 @@ header('Strict-Transport-Security: max-age=63072000');
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
-
 
 </head>
 <body>
@@ -57,7 +53,7 @@ header('Strict-Transport-Security: max-age=63072000');
           <div id="quote-card" class="card is-rounded">
             <div class="card-content">
             <div id="quote-container">
-              <h1 class="title has-text-centered is-size-5">Live Cricket Score 🏏</h1>
+              <h1 class="title has-text-centered is-size-6">Live Cricket Score 🏏</h1>
               <div class="content">
                 <div class="has-text-centered">
                   <button id="refreshButton" class="button is-danger is-rounded read-score">Refresh Score</button>

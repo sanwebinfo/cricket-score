@@ -1,26 +1,74 @@
+@font-face {
+  font-family: 'GeistMono';
+  src: url('media/fonts/GeistMono-Light.woff2') format('woff2');
+  font-weight: 300; /* Light */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('media/fonts/GeistMono-Regular.woff2') format('woff2');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('media/fonts/GeistMono-Medium.woff2') format('woff2');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('media/fonts/GeistMono-SemiBold.woff2') format('woff2');
+  font-weight: 600; /* Semibold */
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'GeistMono';
+  src: url('media/fonts/GeistMono-Bold.woff2') format('woff2');
+  font-weight: 700; /* bold */
+  font-style: normal;
+  font-display: swap;
+}
+
 html, body {
   min-height: 100vh;
 }
 body {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
   background-color: #FDA7DF;
   padding-bottom: 20px;
+}
+p {
+  font-family: 'GeistMono', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: #221f1f;
+  letter-spacing: .03em;
+  word-wrap: break-word;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
 }
 #quote-container {
   margin: 10px auto;
   border-radius: 10px;
   padding: 20px;
   background-color: #fff;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
 }
 #quote {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
   font-size: 20px;
   margin-bottom: 20px;
   color: #333;
 }
 #author {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
   font-style: italic;
   color: #777;
 }
@@ -30,10 +78,10 @@ body {
 #quote-card {
   max-width: 800px;
   margin: 10px auto;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
 }
 .generate-button {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'GeistMono', monospace;
   background-color: #4CAF50;
   border: none;
   color: white;
@@ -52,16 +100,16 @@ body {
   background-color: #45a049;
 }
 .read-score {
-	font-family: "Roboto Mono", monospace;
-	font-weight: 700;
-	font-size: 15px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-	border-radius: 32px;
-	padding: 10px;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased !important;
-	-moz-font-smoothing: antialiased !important;
-	text-rendering: optimizelegibility !important;
+  font-family: 'GeistMono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 32px;
+  padding: 10px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-font-smoothing: antialiased !important;
+  text-rendering: optimizelegibility !important;
 }
 .loading {
   display: none;

@@ -14,6 +14,8 @@ Free Python Cricket Score API - [@Cricket API](https://github.com/sanwebinfo/cri
 - CSS, Bulma CSS Framework
 - JavaScript
 - PHP
+- Fetch API
+- Vercel Geist Font - <https://github.com/vercel/geist-font>
 
 ## Build Setup 📦
 
