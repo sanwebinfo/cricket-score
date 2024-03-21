@@ -1,0 +1,131 @@
+{
+    "IPL_2024_schedule": [
+      {
+        "date": "2024-03-22",
+        "match": "CSK vs RCB",
+        "time_IST": "8:00 PM",
+        "venue": "Chennai"
+      },
+      {
+        "date": "2024-03-23",
+        "match": "PBKS vs DC",
+        "time_IST": "3:30 PM",
+        "venue": "Mohali"
+      },
+      {
+        "date": "2024-03-23",
+        "match": "KKR vs SRH",
+        "time_IST": "8:00 PM",
+        "venue": "Kolkata"
+      },
+      {
+        "date": "2024-03-24",
+        "match": "RR vs LSG",
+        "time_IST": "3:30 PM",
+        "venue": "Jaipur"
+      },
+      {
+        "date": "2024-03-24",
+        "match": "GT vs MI",
+        "time_IST": "8:00 PM",
+        "venue": "Ahmedabad"
+      },
+      {
+        "date": "2024-03-25",
+        "match": "RCB vs PBKS",
+        "time_IST": "8:00 PM",
+        "venue": "Bengaluru"
+      },
+      {
+        "date": "2024-03-26",
+        "match": "CSK vs GT",
+        "time_IST": "8:00 PM",
+        "venue": "Chennai"
+      },
+      {
+        "date": "2024-03-27",
+        "match": "SRH vs MI",
+        "time_IST": "8:00 PM",
+        "venue": "Hyderabad"
+      },
+      {
+        "date": "2024-03-28",
+        "match": "RR vs DC",
+        "time_IST": "8:00 PM",
+        "venue": "Jaipur"
+      },
+      {
+        "date": "2024-03-29",
+        "match": "RCB vs KKR",
+        "time_IST": "8:00 PM",
+        "venue": "Bengaluru"
+      },
+      {
+        "date": "2024-03-30",
+        "match": "LSG vs PBKS",
+        "time_IST": "8:00 PM",
+        "venue": "Lucknow"
+      },
+      {
+        "date": "2024-03-31",
+        "match": "GT vs SRH",
+        "time_IST": "3:30 PM",
+        "venue": "Ahmedabad"
+      },
+      {
+        "date": "2024-03-31",
+        "match": "DC vs CSK",
+        "time_IST": "8:00 PM",
+        "venue": "Visakhapatnam"
+      },
+      {
+        "date": "2024-04-01",
+        "match": "MI vs RR",
+        "time_IST": "8:00 PM",
+        "venue": "Mumbai"
+      },
+      {
+        "date": "2024-04-02",
+        "match": "RCB vs LSG",
+        "time_IST": "8:00 PM",
+        "venue": "Bengaluru"
+      },
+      {
+        "date": "2024-04-03",
+        "match": "DC vs KKR",
+        "time_IST": "8:00 PM",
+        "venue": "Visakhapatnam"
+      },
+      {
+        "date": "2024-04-04",
+        "match": "GT vs PBKS",
+        "time_IST": "8:00 PM",
+        "venue": "Ahmedabad"
+      },
+      {
+        "date": "2024-04-05",
+        "match": "SRH vs CSK",
+        "time_IST": "8:00 PM",
+        "venue": "Hyderabad"
+      },
+      {
+        "date": "2024-04-06",
+        "match": "RR vs RCB",
+        "time_IST": "8:00 PM",
+        "venue": "Jaipur"
+      },
+      {
+        "date": "2024-04-07",
+        "match": "MI vs DC",
+        "time_IST": "3:30 PM",
+        "venue": "Mumbai"
+      },
+      {
+        "date": "2024-04-07",
+        "match": "LSG vs GT",
+        "time_IST": "8:00 PM",
+        "venue": "Lucknow"
+      }
+    ]
+  }
+  

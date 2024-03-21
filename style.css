@@ -115,3 +115,46 @@ p {
   display: none;
   text-align: center;
 }
+input {
+  font-family: 'GeistMono', monospace;
+}
+select {
+  font-family: 'GeistMono', monospace;
+}
+/* Default styles for the table */
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'GeistMono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Styles for table headers */
+.table-wrapper th {
+  background-color: #f2f2f2;
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Styles for table cells */
+.table-wrapper td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (max-width: 600px) {
+  /* Modify table layout for smaller screens */
+  .table-wrapper table {
+      width: 100%; /* Ensure table occupies full width of viewport */
+  }
+  .table-wrapper th,
+  .table-wrapper td {
+      padding: 4px; /* Decrease padding for smaller screens */
+      font-size: 15px; /* Decrease font size for smaller screens */
+      font-weight: 700;
+  }
+}
