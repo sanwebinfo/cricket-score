@@ -32,13 +32,9 @@ header('Strict-Transport-Security: max-age=63072000');
     <section class="section">
         <div class="container">
             <div id="quote-card" class="card is-rounded">
-                <header class="card-header">
-                    <p class="card-header-title">
-                        IPL 2024 Schedule - First 21 Days
-                    </p>
-                </header>
                 <div class="card-content">
                 <div id="quote-container">
+                <h1 class="title has-text-centered is-size-6">IPL 2024 Schedule - First 21 Days</h1>
                     <div class="content">
                         <div class="field">
                             <div class="control">
