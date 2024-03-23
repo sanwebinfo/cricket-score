@@ -11,7 +11,7 @@ Free Python Cricket Score API - [@Cricket API](https://github.com/sanwebinfo/cri
 ## Built with ⚙
 
 - HTML
-- CSS, Bulma CSS Framework
+- CSS, Bulma CSS Framework V1
 - JavaScript
 - PHP
 - Fetch API

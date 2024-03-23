@@ -5,7 +5,7 @@ const scoreElement = document.getElementById('score');
 async function fetchCricketScore(id) {
   try {
     if (!isValidNumericId(id)) {
-      throw new Error('Invalid ID format. Please provide a numeric ID.');
+      throw new Error('Invalid ID format - Please provide a numeric ID.');
     }
 
     loadingSpinner.style.display = 'block';
