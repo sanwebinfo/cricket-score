@@ -26,10 +26,29 @@ Free Python Cricket Score API - [@Cricket API](https://github.com/sanwebinfo/cri
 php -S localhost:6009
 ```
 
+- Live match
+
+```sh
+http://localhost:6009/?id=12345
+```
+
+- Upcoming matches
+
+```sh
+http://localhost:6009/upcoming.php
+```
+
+- Enter cricbuzz match URL and Get 5 digit Match ID
+
+```sh
+http://localhost:6009/match.php
+```
+
 - `.env` data
 
 ```sh
 APIURL=https://api.example.com/score?id=
+URL=https://www.cricbuzz.com/cricket-match/live-scores/upcoming-matches
 ```
 
 ## LICENSE ✅
