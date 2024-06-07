@@ -10,7 +10,7 @@ header('Strict-Transport-Security: max-age=63072000');
 header('Content-type:application/json; charset=utf-8');
 header('X-Robots-Tag: noindex, nofollow', true);
 
-$url = getenv('URL');
+$url = getenv('LIVE');
 
 $ch = curl_init();
 
@@ -53,7 +53,7 @@ try {
 
     } else {
         $id = '0';
-        $title = 'Currently No Upcoming Matches';
+        $title = 'Currently No Live Match';
         $data[] = array("title" => $title, "id" => $id);
         http_response_code(200);
         echo json_encode($data);

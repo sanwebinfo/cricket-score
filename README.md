@@ -32,6 +32,12 @@ php -S localhost:6009
 http://localhost:6009/?id=12345
 ```
 
+- Live Matches
+
+```sh
+http://localhost:6009/live.php
+```
+
 - Upcoming matches
 
 ```sh
@@ -49,6 +55,7 @@ http://localhost:6009/match.php
 ```sh
 APIURL=https://api.example.com/score?id=
 URL=https://www.cricbuzz.com/cricket-match/live-scores/upcoming-matches
+LIVE=https://www.cricbuzz.com/live-cricket-scores/
 ```
 
 ## LICENSE ✅
