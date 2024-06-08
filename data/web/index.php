@@ -6,6 +6,7 @@ use Slim\Exception\HttpNotFoundException;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Psr7\Response;
 use Slim\Psr7\Factory\ResponseFactory;
+use Tuupola\Middleware\CorsMiddleware;
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -73,6 +74,22 @@ $customErrorHandler = function (
 
 // Set the custom error handler for other errors
 $errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+
+$app->add(new Tuupola\Middleware\CorsMiddleware([
+    "origin" => [
+        "https://*.sanweb.info",
+        "https://*.mskian.com"
+    ],
+    "methods" => ["GET"],
+    "error" => function ($request, $response, $arguments) {
+        $data["status"] = "error";
+        $data["message"] = $arguments["message"];
+        $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        return $response
+            ->withStatus(500)
+            ->withHeader("Content-Type", "application/json");
+    }
+]));
 
 // Run app
 $app->run();
