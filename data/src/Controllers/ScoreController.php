@@ -22,14 +22,13 @@ class ScoreController
     public function score(Request $request, Response $response, $args)
     {
         $queryParams = $request->getQueryParams();
-    
-        // Check if 'id' key exists in query parameters
+
         if (!isset($queryParams['id']) || empty($queryParams['id'])) {
             return $this->jsonResponse($response, ['error' => 'Invalid or missing match ID'], 400);
         }
-    
+
         $id = htmlspecialchars($queryParams['id']);
-    
+
         try {
             $client = new Client();
             $apiResponse = $client->request('GET', 'https://www.cricbuzz.com/live-cricket-scores/' . $id, [
@@ -37,32 +36,41 @@ class ScoreController
                     'User-Agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
                 ]
             ]);
-    
+
             if ($apiResponse->getStatusCode() !== 200) {
                 return $this->jsonResponse($response, ['error' => 'Failed to fetch data from Cricbuzz'], 502);
             }
-    
+
             $html = (string) $apiResponse->getBody();
             $crawler = new Crawler($html);
-    
+
             $data = $this->parseData($crawler);
             $status = $this->getStatus($data);
             if (empty($data['title'])) {
                 return $this->jsonResponse($response, ['error' => 'Data not found'], 404);
             }
-    
+
+            if (empty($data['current_batsmen'])) {
+                $data['current_batsmen'] = [['name' => 'Match Stats will Update Soon', 'runs' => 'Match Stats will Update Soon', 'balls' => 'Match Stats will Update Soon', 'strike_rate' => 'Match Stats will Update Soon']];
+            }
+             if (empty($data['current_bowler'])) {
+                $data['current_bowler'] = [['name' => 'Match Stats will Update Soon', 'overs' => 'Match Stats will Update Soon', 'runs' => 'Match Stats will Update Soon', 'wickets' => 'Match Stats will Update Soon']];
+            }
+
             return $this->jsonResponse($response, [
                 'title' => $data['title'],
                 'update' => $status,
                 'livescore' => $data['live_score'],
                 'match_date' => $data['match_date'],
-                'runrate' => $data['runrate']
+                'runrate' => $data['runrate'],
+                'current_batsmen' => $data['current_batsmen'],
+                'current_bowler' => $data['current_bowler']
             ]);
         } catch (\Exception $e) {
             $this->logger->error('Error fetching score: ' . $e->getMessage());
             return $this->jsonResponse($response, ['error' => 'An error occurred while processing your request'], 500);
         }
-    }    
+    }
 
     private function parseData(Crawler $crawler)
     {
@@ -79,7 +87,9 @@ class ScoreController
             'match_date' => $this->getMatchDate($crawler),
             'live_score' => $this->getText($crawler, "span.cb-font-20.text-bold"),
             'title' => $this->getText($crawler, "h1.cb-nav-hdr.cb-font-18.line-ht24", 0, true),
-            'runrate' => $this->getText($crawler, 'span.cb-font-12.cb-text-gray > span.text-bold:contains("CRR:") + span')
+            'runrate' => $this->getText($crawler, 'span.cb-font-12.cb-text-gray > span.text-bold:contains("CRR:") + span'),
+            'current_batsmen' => $this->getBatsmenData($crawler),
+            'current_bowler' => $this->getBowlersData($crawler)
         ];
     }
 
@@ -91,37 +101,27 @@ class ScoreController
             if ($removeCommentary) {
                 $text = str_replace(', Commentary', '', $text);
             }
-            // Remove "Live Cricket Score" from the title
             $text = str_replace(' - Live Cricket Score', '', $text);
             return $text;
         }
         return 'Match Stats will Update Soon';
     }
-    
 
     private function getMatchDate(Crawler $crawler)
     {
-        // Filter the HTML content to select the match date node
         $node = $crawler->filter('span[itemprop="startDate"]');
-        
-        // Check if the node exists
+
         if ($node->count() > 0) {
-            // Extract the match time from the content attribute
             $matchTime = $node->attr('content');
-            
-            // Convert UTC time to local timezone
             $newDt = explode('+', $matchTime)[0];
             $utcTime = new \DateTime($newDt, new \DateTimeZone('UTC'));
             $utcTime->setTimezone(new \DateTimeZone('Asia/Kolkata'));
-            
-            // Format the date and time for display
+
             return $utcTime->format('l, d M Y - h:i:s A');
         }
-        
-        // Return default message if match date information is not available
+
         return 'Match Date will Update Soon';
     }
-    
 
     private function getStatus($data)
     {
@@ -160,4 +160,97 @@ class ScoreController
             ->withHeader('X-Robots-Tag', 'noindex, nofollow', true)
             ->withStatus($statusCode);
     }
+
+    private function getBatsmenData(Crawler $crawler)
+    {
+        $batsmen = [];
+        $batters = $crawler->filter('div.cb-col.cb-col-50');
+    
+        if ($batters->count() >= 3) {
+            $name = $runs = $balls = $strikeRate = '';
+    
+            if ($batters->eq(1)->count() > 0) {
+                $name = $batters->eq(1)->text();
+            }
+    
+            $runsNode = $crawler->filter('div.cb-col.cb-col-10.ab.text-right')->eq(0);
+            if ($runsNode->count() > 0) {
+                $runs = $runsNode->text();
+            }
+    
+            $ballsNode = $crawler->filter('div.cb-col.cb-col-10.ab.text-right')->eq(1);
+            if ($ballsNode->count() > 0) {
+                $balls = $ballsNode->text();
+            }
+    
+            $strikeRateNode = $crawler->filter('div.cb-col.cb-col-14.ab.text-right')->eq(0);
+            if ($strikeRateNode->count() > 0) {
+                $strikeRate = $strikeRateNode->text();
+            }
+    
+            $batsmen[] = [
+                'name' => $name ?: 'Match Stats will Update Soon',
+                'runs' => $runs !== '' ? $runs : '0',
+                'balls' => $balls !== '' ? $balls : '0',
+                'strike_rate' => $strikeRate !== '' ? $strikeRate : '0'
+            ];
+        } else {
+            $batsmen[] = [
+                'name' => 'Match Stats will Update Soon',
+                'runs' => 'Match Stats will Update Soon',
+                'balls' => 'Match Stats will Update Soon',
+                'strike_rate' => 'Match Stats will Update Soon'
+            ];
+        }
+    
+        return $batsmen;
+    }
+    
+    
+    private function getBowlersData(Crawler $crawler)
+    {
+        $bowlers = [];
+        $bowlers_info = $crawler->filter('div[class^="cb-col cb-col-"][class*="cb-col-50"]');
+    
+        if ($bowlers_info->count() >= 6) {
+            $name = $overs = $runs = $wickets = '';
+    
+            if ($bowlers_info->eq(4)->count() > 0) {
+                $name = $bowlers_info->eq(4)->text();
+            }
+    
+            $oversNode = $crawler->filter('div[class^="cb-col cb-col-10"][class*="text-right"]')->eq(8);
+            if ($oversNode->count() > 0) {
+                $overs = $oversNode->text();
+            }
+    
+            $runsNode = $crawler->filter('div[class^="cb-col cb-col-10"][class*="text-right"]')->eq(9);
+            if ($runsNode->count() > 0) {
+                $runs = $runsNode->text();
+            }
+    
+            $wicketsNode = $crawler->filter('div[class^="cb-col cb-col-8"][class*="text-right"]')->eq(9);
+            if ($wicketsNode->count() > 0) {
+                $wickets = $wicketsNode->text();
+            }
+    
+            $bowlers[] = [
+                'name' => $name ?: 'Match Stats will Update Soon',
+                'overs' => $overs !== '' ? $overs : '0',
+                'runs' => $runs !== '' ? $runs : '0',
+                'wickets' => $wickets !== '' ? $wickets : '0'
+            ];
+        } else {
+            $bowlers[] = [
+                'name' => 'Match Stats will Update Soon',
+                'overs' => 'Match Stats will Update Soon',
+                'runs' => 'Match Stats will Update Soon',
+                'wickets' => 'Match Stats will Update Soon'
+            ];
+        }
+    
+        return $bowlers;
+    }
+    
+    
 }
