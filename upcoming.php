@@ -1,5 +1,9 @@
 <?php
 
+require_once('functions.php');
+
+$current_page = htmlspecialchars("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", ENT_QUOTES, 'UTF-8');
+
 header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 header('X-Content-Type-Options: nosniff');
@@ -25,8 +29,25 @@ header('Strict-Transport-Security: max-age=63072000');
 
 <title>Upcoming Live Cricket Matches 🏏</title>
 <meta name="description" content="Get Real-time Live Cricket Score Update without refreshing the page.">
-<?php $current_page = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; echo '<link rel="canonical" href="'.$current_page.'" />'; ?>
+<?php $current_page = htmlspecialchars("https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", ENT_QUOTES, 'UTF-8');
+        echo '<link rel="canonical" href="' . $current_page . '" />';
+?>
 
+<meta property="og:site_name" content="Upcoming Live Cricket Matches 🏏">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Upcoming Live Cricket Matches 🏏">
+<meta property="og:description" content="Get Real-time Live Cricket Score Update without refreshing the page.">
+<meta property="og:url" content="<?php echo $current_page; ?>">
+<meta property="og:image" content="<?php echo getFullUrl() . '/media/random-score.jpg'; ?>">
+<meta property="og:image:alt" content="Live Cricket Score 🏏" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:title" content="Upcoming Live Cricket Matches 🏏">
+<meta name="twitter:description" content="Get Real-time Live Cricket Score Update without refreshing the page.">
+<meta name="twitter:url" content="<?php echo $current_page; ?>">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="<?php echo getFullUrl() . '/media/random-score.jpg'; ?>">
 
 <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css" integrity="sha512-HqxHUkJM0SYcbvxUw5P60SzdOTy/QVwA1JJrvaXJv4q7lmbDZCmZaqz01UPOaQveoxfYRv1tHozWGPMcuTBuvQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
