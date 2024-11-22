@@ -15,8 +15,13 @@ header('Strict-Transport-Security: max-age=63072000');
 <meta name="HandheldFriendly" content="True" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#c7ecee">
-<link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABJklEQVQ4jc2TvUoDQRSFvxk2+5PgKskmuGCxWyS+gIgICnkBg2DpO9kKCrYW1nZiLQoGRARBi6ASEheLkLhqhrEIBHaXEEkapxpmmO+ec+8ZsXF2qpljGQAIMdtrrZHzVAfmBxgTyQJWCjYAg6HiPf75G0AI8B2L/eoy6xUXUwpe+l8cPbxxG/WyhdIHa57L4dYqjcDDz5sULQMvVhxsVtn2l6YDdsMyJTsHwHe/x/1VE993yUnBXljBNZOiMxaChZHv3vUdz6831OoNpByN2ZIaSyZHnlFw3ooAGDiKWn0HZ7E4vmu2P+immplQIABbwGWrQ+gHlPIFlFIM4piLVpeTpyjTg4yF48f2GFY2NCYQKcHnhMAnADq17wynR/y/RFnP/qN/ASq1TUWfNqPXAAAAAElFTkSuQmCC" />
-
+<link rel="shortcut icon" type="image/x-icon" href="/media/favicon.ico" />
+<link rel="icon" type="image/png" sizes="196x196" href="/media/192.png" />
+<link rel="apple-touch-icon" href="/media/180.png" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="application-name" content="Cricket" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Cricket" />
 
 <title>Live Cricket Score 🏏</title>
 <meta name="description" content="Get Real-time Live Cricket Score Update without refreshing the page.">
